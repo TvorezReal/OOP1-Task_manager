@@ -29,6 +29,7 @@ class Store:
 
     def add_item(self, item, price):
         self.items[item] = price
+        print(f"Товар {item} добавлен в {self.name}.")
 
     def remove_item(self, item):
         if item in self.items:
