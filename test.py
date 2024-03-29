@@ -14,13 +14,11 @@ class Task:
     def __str__(self):
         return f"{self.description} со сроком {self.due_date} - {'Выполнена' if self.completed else 'Не выполнена'}"
 
-class TaskManager:
-    def __init__(self):
-        self.tasks = []
-
-    def add_task(self, description, due_date):
-        task = Task(description, due_date)
-        self.tasks.append(task)
+    def add_task(self):
+        if not self.completed:
+            self.tasks = []
+            self.tasks.append(self)
+        self.tasks.append(self)
 
     def mark_task_completed(self, description):
         for task in self.tasks:
@@ -37,9 +35,13 @@ class TaskManager:
 
 
 # Пример использования
-mgr = TaskManager()
-mgr.add_task("нарисовать картину", "2023-05-30")
-mgr.add_task("постричь газон", "2023-04-20")
+mgr = Task("постричь газон", "2023-04-20")
+mgr.add_task()
+mgr2 = Task("нарисовать картину", "2023-05-30")
+mgr2.add_task()
 mgr.display_current_tasks()
-mgr.mark_task_completed("постричь газон")
-mgr.display_current_tasks()
+print(tasks)
+# mgr.mark_task_completed("нарисовать картину")
+# mgr.display_current_tasks()
+# mgr.mark_task_completed("постричь газон")
+# mgr.display_current_tasks()
