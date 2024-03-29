@@ -34,7 +34,7 @@ class Store:
         if item in self.items:
             del self.items[item]
 
-    def get_price(self, item):
+    def get_price(self, item):   #возвращает цену (в 1 строку: return self.items.get[item] or None)
         if item in self.items:
             return self.items[item]
         else:
@@ -43,6 +43,7 @@ class Store:
     def update_price(self, item, new_price):
         if item in self.items:
             self.items[item] = new_price
+            print(f"Цена {item} обновлена на {new_price}.")
 
 
     def all_items(self):
